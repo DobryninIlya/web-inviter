@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Платеж проведен</title>
+    <link rel="stylesheet" href="/static/css/payment_make_page.css">
+    <script src="https://telegram.org/js/telegram-web-app.js">
+        let tg = window.Telegram.WebApp;
+        tg.ready()
+        tg.expand()
+    </script>
+    <script src="/static/js/internal_theme.js" defer></script>
+    <script src="/static/js/subscribe.js" defer></script>
+</head>
+<body>
+<img src="/static/img/logo.png" />
+<div class="subscribe_pay" style="display:none;">
+<p class="list-header-text bold show ">
+    Выберите канал, подписку на который хотите купить:
+</p>
+<div class="item show ">
+    <div class="checkbox-rect show ">
+        <input
+                type="radio"
+                id="checkbox-rect1"
+                name="channel"
+                class="show "
+                checked="checked"
+                value="poop_zemli"
+        />
+        <label for="checkbox-rect1" class="show">Название канала</label>
+    </div>
+    <button type="button" class="pay_bttn bttn" id="make_payment">
+        Оплатить
+    </button>
+</div>
+</div>
+<div class="advantages_text">
+<p class="list-header-text bold">Возможности после покупки:</p>
+<ul class="advantages-list">
+    <li class="advantages">
+        ⭐️ бессрочный доступ к материалам канала
+    </li>
+    <li class="advantages ">
+        ⭐️ литературные подкасты по произведениям XVIII — первой половины XIX
+        в. из кодификатора ОГЭ, ЕГЭ
+    </li>
+    <li class="advantages ">⭐️ конспекты к каждому подкасту</li>
+    <li class="advantages ">
+        ⭐️ ссылки на дополнительные видео-лекции, статьи, учебники и материалы
+        по теме
+    </li>
+    <li class="advantages ">
+        ⭐️ теоретическая помощь модератора в чате канала
+    </li>
+    <li class="advantages ">⭐️ авторские материалы</li>
+</ul>
+<p class="list-header-text bold ">
+    Кому будут полезны наши подкасты?
+</p>
+<ul>
+    <li class="advantages ">
+        ✏️ Учащимся 9,10,11 классов, сдающим экзамены (ОГЭ, ЕГЭ) по литературе
+    </li>
+    <li class="advantages ">
+        ✏️ Учащимся старшей школы, чтобы подтянуть свои знания по дисциплине
+    </li>
+    <li class="advantages ">
+        ✏️ Учителям литературы, которые хотят освежить быстро свои знания перед
+        уроком по тому или иному произведению
+    </li>
+    <li class="advantages ">
+        ✏️ Любителям литературы, желающим расширить свой кругозор
+    </li>
+</ul>
+<button type="button" class="pay_bttn bttn" id="next_payment">
+    Оплатить
+</button>
+</div>
+</body>
+<script>
+
+</script>
+</html>

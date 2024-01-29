@@ -1,0 +1,829 @@
+body {
+    background: #222534;
+    margin: 0px;
+    alignment: center;
+    /*max-width: 390px;*/
+
+}
+.header_text {
+    vertical-align: middle;
+    position: relative;
+    color: white;
+    text-align: center;
+    /*margin-left: 43px;*/
+    /*margin-right: 43px;*/
+    width: auto;
+    height: auto;
+    display: block;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 24px;
+    line-height: 29px;
+    /*letter-spacing: -0.065em;*/
+    margin-top: 20px;
+}
+
+.schedule_block {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 366px;
+    height: auto;
+    left: 0px;
+    top: 0px;
+    alignment: center;
+    /*background: #222534;*/
+    border-radius: 10px;
+    opacity: 1;
+    overflow: hidden; /*swipe*/
+    /*display: flex;*/
+}
+.schedule_header {
+    position: relative;
+    max-width: 336px;
+    width: 336px;
+    height: 55px;
+    left: 0px;
+    top: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: block;
+    background: #01C782;
+
+    overflow: hidden;
+}
+.lesson_date {
+    position: absolute;
+    top: 50%;
+    margin-top: -0.625em;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    text-align: center;
+    /*alignment: center;*/
+    width: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    /*letter-spacing: -0.065em;*/
+    color: #FFFFFF;
+}
+.schedule_item {
+    position: relative;
+    display: flex;
+    width: auto;
+    height: 80px;
+    left: 0px;
+    top: 0px;
+    /*border-bottom: 2px solid #000000;*/
+    border-bottom: none;
+}
+.schedule_item::after {
+    content: "";
+    position: absolute;
+    bottom: 1px; /* Сдвигаем на 5px вниз */
+    left: 5%;
+    width: 90%;
+    height: 1px; /* Задаем толщину нижней границы */
+    background-color: black; /* Задаем цвет границы */
+}
+
+.lesson_time {
+    position: absolute;
+    /*height: auto;*/
+    /*width: auto;*/
+    margin-top: 19px;
+    /*margin-bottom: 26px;*/
+    margin-left: 8px;
+    float: right;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 31px;
+    text-align: right;
+    letter-spacing: -0.065em;
+
+    color: #000000;
+    right: 0px;
+}
+
+.schedule_time {
+    position: relative;
+    min-width: 70px;
+    height: 100%;
+    left: 0px;
+    margin-right: 8px;
+}
+.lesson_room{
+    position: absolute;
+    /*top: 32px;*/
+    display: block;
+    right: 0px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 15px;
+    /* identical to box height */
+
+    text-align: right;
+    letter-spacing: -0.065em;
+    bottom: -9px;
+    color: #838383;
+}
+
+.main_info {
+    position: relative;
+    /*width: 300px;*/
+    height: 100%;
+    flex-grow: 1;
+    right: 0;
+    padding-left: 8px;
+}
+
+.lesson_name {
+    /*position: absolute;*/
+    max-width: 231px;
+    max-height: 32px;
+    height: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 16px;
+    letter-spacing: -0.065em;
+
+    color: #000000;
+
+    top: 17px;
+    margin: 0px;
+
+    display: inline-block;
+    width: 100%;
+    line-height: normal;
+    text-align: left;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.lesson_freq {
+    position: absolute;
+    max-height: 32px;
+    max-width: 220px;
+    height: auto;
+    bottom: -9px;
+    display: block;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.065em;
+    overflow: hidden;
+
+    color: #838383;
+}
+
+.schedule-wrapper {
+    display: flex;
+    flex-direction: row;
+    /*overflow-x: auto;*/
+    scroll-behavior: smooth;
+    /*background: #222534;*/
+    transition: transform 0.5s ease-out;
+}
+
+.schedule {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 336px;
+    /*margin: 20px;*/
+    background: #FFFFFF;
+    /*border-top-left-radius: 10px;*/
+    /*border-top-right-radius: 10px;*/
+    /*margin-left: 15px;*/
+    /*margin-right: 15px;*/
+    border-radius: 15px;
+
+    margin-left: calc((100% - 336px) / 2); /* вычисляем отступ слева */
+    margin-right: calc((100% - 336px) / 2);
+}
+
+.lesson_none {
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 25px;
+    letter-spacing: -0.01em;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    background-color: inherit;
+    z-index: 9990;
+}
+
+.arrow-left {
+    left: 10px;
+    border-width: 10px 15px 10px 0;
+    border-color: transparent #FFFFFF transparent transparent;
+
+}
+
+.arrow-right {
+    right: 10px;
+    border-width: 10px 0 10px 15px;
+    border-color: transparent transparent transparent #FFFFFF;
+
+}
+
+.lesson_type {
+    max-height: 32px;
+
+    left: calc(50% - 60px/2 - 47px);
+    top: calc(50% - 14px/2 - 228px);
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.045em;
+    background-color: #3DA0E7;
+    margin: 0px;
+    color: #FFFFFF;
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    padding: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-clip: padding-box;
+    border-radius: 6px;
+    margin-right: 5px;
+}
+
+.menu_bar {
+    display: flex;
+    height: 55px;
+    width: 100%;
+    background: #323232;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 3px;
+}
+
+.img_logo {
+    width: 150px;
+}
+
+.menu_item {
+    display: flex;
+    flex-shrink: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu_item#menu_schedule {
+    /*background-color: #4281A5;*/
+    border: 1px solid #9C9C9C;
+    border-radius: 20px;
+}
+
+.menu_icon {
+    max-height: 36px;
+    width: 100%;
+}
+
+.main_block {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    height: 100%;
+    padding-bottom: 55px;
+}
+
+#developed_by {
+    top: 55px;
+    position: relative;
+}
+
+@font-face {
+    src: url("fonts/Inter-Regular.ttf");
+    font-family: Inter;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: -0.065em;
+    text-align: left;
+
+}
+
+@font-face {
+    src: url("fonts/Inter-Thin.ttf");
+    font-family: Inter-Thin;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: -0.065em;
+    text-align: left;
+
+}
+
+.auth_error_block {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+.auth_error_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 247px;
+    height: 39px;
+
+    background: #B36E2F;
+    border-radius: 20px 20px 0px 0px;
+}
+.auth_error_body {
+    box-sizing: border-box;
+
+    position: relative;
+    width: 247px;
+    height: auto;
+    background: #FFFFFF;
+    border-bottom: 1px solid #000000;
+    border-radius: 0px 0px 20px 20px;
+    padding: 5px;
+    padding-bottom: 20px;
+}
+.auth_error_text {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 100.52%;
+    /* or 15px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.065em;
+
+    color: #000000;
+}
+
+
+.auth_error_header {
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 100.52%;
+    /* or 20px */
+    letter-spacing: -0.065em;
+    justify-content: center;
+    display: flex;
+    color: #FFFFFF;
+
+}
+
+.enter_button {
+    position: relative;
+    height: 39px;
+    max-height: 39px;
+    margin-right: auto;
+    margin-left: auto;
+    background: #2C73C6;
+    border-radius: 50px;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px;
+
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.preloader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    padding: 20px;
+}
+
+.contact_button {
+    display: flex;
+    flex-shrink: 1;
+    /*width: 100%;*/
+    /*height: 100%;*/
+    background: #1F84AF;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+
+    /*width: 312px;*/
+    /*height: 44px;*/
+    /*flex-shrink: 0;*/
+    /*border-radius: 32px;*/
+    background: #3A3F55;
+
+    color: white;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 8px;
+    text-align: center;
+
+}
+
+.loader_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 4px 4px 0px rgba(27, 0, 191, 0.52);
+    font-size: 22px;
+    font-family: Ruda;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.logo_container {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contact_buttons_row {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+
+    padding-bottom: 80px;
+}
+
+.project_description {
+    width: 90%;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Inter-Thin';
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    /*letter-spacing: -0.975px;*/
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a:visited {
+    color: white; /* здесь нужно указать цвет, который вы хотите использовать для посещенных ссылок */
+}
+
+.services_block {
+    display: block;
+    height: 100%;
+    margin-bottom: 100px;
+}
+
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*padding: 20px;*/
+    background-color: #fff;
+    border: 1px solid #000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 9999; /* установка z-index для отображения поверх других элементов */
+    right: 200%;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3); /* установка прозрачности для затемнения */
+    z-index: 9998; /* установка z-index ниже, чем у всплывающего окна */
+}
+
+.popup-visible {
+    display: block;
+    opacity: 1;
+    right: 0;
+}
+
+
+.popup_header {
+    position: relative;
+    max-width: 336px;
+    width: 336px;
+    height: 35px;
+    left: 0px;
+    top: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: block;
+    background: #2F46B3;
+    overflow: hidden;
+}
+
+.popup_header_text {
+    position: absolute;
+    top: 50%;
+    margin-top: -0.625em;
+    text-align: center;
+    width: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: normal;
+    color: #FFFFFF;
+}
+
+.pop {
+    width: 100%;
+    max-width: 336px;
+    background: #FFFFFF;
+    border-radius: 15px;
+    /*margin-left: calc((100% - 336px) / 2);*/
+    /*margin-right: calc((100% - 336px) / 2);*/
+}
+
+.popup_body {
+    padding: 8px 15px 10px;
+}
+
+.popup_subheader {
+    width: 100%;
+    display: block;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: left;
+    letter-spacing: -0.065em;
+    color: #838383;
+    margin: 3px;
+}
+
+.popup_maintext {
+    width: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
+    margin: 3px;
+    padding-left: 12px;
+}
+
+.hidden_payload {
+    display: none;
+}
+.active {
+    c: auto; /* активируем блок при нажатии на другой */
+}
+
+.unactive {
+    pointer-events: none; /* активируем блок при нажатии на другой */
+}
+
+.null_response {
+    width:100%;
+    height: 80px;
+    background: white;
+    display: flex;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.null_response_text {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 15px;
+    text-align: left;
+    letter-spacing: -0.065em;
+    color: #000000;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.lesson_editor_block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 336px;
+    border-radius: 20px 20px 20px 20px;
+    padding-bottom: 100px;
+}
+
+.lesson_editor {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 336px;
+    border-radius: 20px 20px 20px 20px;
+    margin-bottom: 100px;
+    padding-bottom: 100px;
+    background: white;
+
+}
+
+.editor_body {
+    padding-top: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.lesson_editor_header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 46px;
+    background: #D37D4F;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.lesson_editor_header_text {
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 40%;
+    letter-spacing: -0.065em;
+    color: #FFFFFF;
+}
+
+.editor_text {
+    width: 100%;
+    display: block;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px;
+    text-align: left;
+    letter-spacing: -0.065em;
+    color: #838383;
+    margin: 3px;
+}
+
+select {
+        position: relative;
+    height: 29px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #FFFFFF;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.input_lesson_name {
+    left: 10px;
+    position: relative;
+    height: 29px;
+    width: 90%;
+    background: #FFFFFF;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+
+    padding: 0px;
+
+    font-size: 15px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.remove-btn {
+    padding: 5px;
+    background: #E7523D;
+    display: block;
+    border-radius: 20px;
+    border: 0px;
+    color: white;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.cancel-btn {
+    padding: 5px;
+    background: #2C73C6;
+    display: inline-block;
+    border-radius: 20px;
+    border: 0px;
+    color: white;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.confirm-btn {
+    padding: 5px;
+    background: #6CC241;
+    display: inline-block;
+    border-radius: 20px;
+    border: 0px;
+    color: white;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.return-btn {
+    padding: 5px;
+    background: #6CC241;
+    display: inline-block;
+    border-radius: 20px;
+    border: 0px;
+    color: white;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.marked-deleted {
+    opacity: 30%;
+}
+
+.return-delete {
+    display: block;
+}
+
