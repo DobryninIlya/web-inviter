@@ -54,7 +54,7 @@ func main() {
 			Handler:   server,
 			TLSConfig: m.TLSConfig(),
 		}
-		if err = srv.ListenAndServeTLS("", ""); err != nil && err != http.ErrServerClosed {
+		if err = srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatal(err)
 			cancel()
 		}

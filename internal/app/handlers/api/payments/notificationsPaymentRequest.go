@@ -9,6 +9,8 @@ import (
 	"main/internal/app/tg_api"
 	"main/internal/payments"
 	"net/http"
+	"strconv"
+	"strings"
 )
 
 func NewNotificationsPaymentRequestHandler(log *logrus.Logger, store sqlstore.StoreInterface, pay payments.Yokassa, tg *tg_api.APItg) func(w http.ResponseWriter, r *http.Request) {
@@ -50,6 +52,21 @@ func NewNotificationsPaymentRequestHandler(log *logrus.Logger, store sqlstore.St
 			if err == sqlstore.ErrTransaсtionAlreadyEnded {
 				tg.RevokeChatInviteLink(log, channelID, link)
 				h.RespondAPI(w, r, http.StatusOK, "payment already ended")
+				return
+			}
+			var tgClient int64
+			clientIDS := strings.Trim(transaction.ClientID, "tg")
+			if clientIDS != "" {
+				tgClient, err = strconv.ParseInt(clientIDS, 10, 64)
+				if err != nil {
+					log.Log(logrus.ErrorLevel, path+": "+err.Error())
+					h.ErrorHandlerAPI(w, r, http.StatusInternalServerError, err)
+					return
+				}
+			}
+			sended := tg.SendMessageTG(log, tgClient, "Вы успешно оплатили подписку. Ссылка на группу: "+link, "", 0)
+			if !sended {
+				log.Log(logrus.ErrorLevel, path+": Can't send message to client. Payment: "+notification.Object.Id)
 				return
 			}
 		}

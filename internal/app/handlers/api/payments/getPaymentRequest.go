@@ -25,16 +25,17 @@ func NewPaymentRequestHandler(log *logrus.Logger, store sqlstore.StoreInterface,
 		subscribeLevel := url.Get("channel") // month, half-year, year
 		var amount string
 		switch subscribeLevel {
-		case "test":
+		case "case1":
 			amount = "150"
-		case "test2":
+		case "case2":
 			amount = "700"
 		case "poop_zemli":
 			amount = "1100"
 		default:
-			log.Log(logrus.ErrorLevel, path+": wrong subscribe channel, setted amount 1000")
-			amount = "1000"
-			//h.ErrorHandlerAPI(w, r, http.StatusBadRequest, errors.New("wrong subscribe level"))
+			log.Log(logrus.ErrorLevel, path+": wrong subscribe channel, aborted")
+			h.ErrorHandlerAPI(w, r, http.StatusBadRequest, errors.New("wrong subscribe level"))
+			return
+			//amount = "1000"
 			//return
 		}
 		clientID := url.Get("client_id")
@@ -55,7 +56,7 @@ func NewPaymentRequestHandler(log *logrus.Logger, store sqlstore.StoreInterface,
 				Type:      "redirect",
 				ReturnUrl: "https://literaturaforheart.ru/payments/done/" + uid, //TODO поменять return_URL
 			},
-			Description: "Премиум подписка Бот расписание КАИ",
+			Description: "Подписка в закрытый канал",
 		}, idempotenceKey)
 		if err != nil {
 			log.Log(logrus.ErrorLevel, path+": "+err.Error())
