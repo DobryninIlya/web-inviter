@@ -1,6 +1,7 @@
 package api_handler
 
 import (
+	"fmt"
 	"github.com/go-chi/chi"
 	"github.com/sirupsen/logrus"
 	h "main/internal/app/handlers/api"
@@ -57,6 +58,7 @@ func NewDonePaymentPageHandler(log *logrus.Logger, store sqlstore.StoreInterface
 				w.Write([]byte(page))
 				return
 			}
+			fmt.Println("clientID: ", transaction.ClientID)
 			var tgClient int64
 			clientIDS := strings.Trim(transaction.ClientID, "tg")
 			if clientIDS != "" {

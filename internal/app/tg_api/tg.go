@@ -37,6 +37,7 @@ func (s APItg) SendMessageTG(log *logrus.Logger, uId int64, message string, butt
 		threadId,
 	)
 	url := fmt.Sprintf(s.tgTemplate, s.tgToken, tgSendMethod, params)
+	fmt.Println(url)
 	resp, err := http.Get(url)
 	if resp.StatusCode != 200 {
 		log.Printf("Ошибка отправки сообщения в телеграм. Статус код: %v", resp.StatusCode)
