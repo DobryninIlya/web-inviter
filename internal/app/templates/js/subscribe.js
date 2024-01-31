@@ -25,7 +25,6 @@ document.getElementById("make_payment").addEventListener("click", function() {
         requestUrl = '/payments/request?tgWebAppStartParam=' + tgWebAppStartParamURL + '___channel%3D' + tariff;
 
     }
-    alert(requestUrl)
 
     // Формируем URL для запроса
     // var requestUrl = '/payments/request?level=' + tariff + '&client_id=' + clientId;

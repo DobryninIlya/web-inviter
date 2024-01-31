@@ -2,6 +2,7 @@ package api_handler
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/sirupsen/logrus"
 	"io"
 	h "main/internal/app/handlers/api"
@@ -24,6 +25,7 @@ func NewNotificationsPaymentRequestHandler(log *logrus.Logger, store sqlstore.St
 			return
 		}
 		json.Unmarshal(body, &notification)
+		fmt.Println(notification)
 		if notification.Event != "payment.succeeded" {
 			h.RespondAPI(w, r, http.StatusOK, "not payment.succeeded")
 			return
