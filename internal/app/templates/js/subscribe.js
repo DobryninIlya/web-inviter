@@ -38,7 +38,8 @@ document.getElementById("make_payment").addEventListener("click", function() {
             // Обрабатываем результат
             var resultUrl = data.result;
             // Перенаправляем пользователя по ссылке из result
-            window.location.href = resultUrl;
+            // window.location.href = resultUrl;
+            window.open(resultUrl, '_blank');
         })
         .catch(function(error) {
             console.log('Ошибка:', error);
