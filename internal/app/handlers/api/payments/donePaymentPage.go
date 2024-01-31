@@ -19,7 +19,6 @@ func NewDonePaymentPageHandler(log *logrus.Logger, store sqlstore.StoreInterface
 		const path = "handlers.api.payments.NewDonePaymentPageHandler"
 		uid := chi.URLParam(r, "payment_id")
 		transaction, err := store.API().GetPaymentRequestByUID(uid)
-
 		if err != nil {
 			log.Log(logrus.ErrorLevel, path+": "+err.Error())
 			h.ErrorHandlerAPI(w, r, http.StatusInternalServerError, err)

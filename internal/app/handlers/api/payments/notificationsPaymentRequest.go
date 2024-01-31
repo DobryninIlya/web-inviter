@@ -25,7 +25,6 @@ func NewNotificationsPaymentRequestHandler(log *logrus.Logger, store sqlstore.St
 			return
 		}
 		json.Unmarshal(body, &notification)
-		fmt.Println(notification)
 		if notification.Event != "payment.succeeded" {
 			h.RespondAPI(w, r, http.StatusOK, "not payment.succeeded")
 			return
@@ -57,6 +56,7 @@ func NewNotificationsPaymentRequestHandler(log *logrus.Logger, store sqlstore.St
 				return
 			}
 			var tgClient int64
+			fmt.Println("clientID: ", transaction.ClientID, "tgClient: ", tgClient)
 			clientIDS := strings.Trim(transaction.ClientID, "tg")
 			if clientIDS != "" {
 				tgClient, err = strconv.ParseInt(clientIDS, 10, 64)
