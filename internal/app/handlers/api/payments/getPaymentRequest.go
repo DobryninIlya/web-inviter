@@ -53,7 +53,7 @@ func NewPaymentRequestHandler(log *logrus.Logger, store sqlstore.StoreInterface,
 			Capture: true,
 			Confirmation: payments.Confirmation{
 				Type:      "redirect",
-				ReturnUrl: "https://schedule-bot.kai.ru/payments/done/" + uid, //TODO поменять return_URL
+				ReturnUrl: "https://literaturaforheart.ru/payments/done/" + uid, //TODO поменять return_URL
 			},
 			Description: "Премиум подписка Бот расписание КАИ",
 		}, idempotenceKey)
