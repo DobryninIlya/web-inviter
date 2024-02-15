@@ -68,7 +68,7 @@ func NewDonePaymentPageHandler(log *logrus.Logger, store sqlstore.StoreInterface
 					return
 				}
 			}
-			sended := tg.SendMessageTG(log, tgClient, "Вы успешно оплатили подписку. Ссылка на группу: "+link, "", 0)
+			sended := tg.SendMessageTG(log, tgClient, "Спасибо за доверие! ❤️ Ваша подписка оформлена, скорее переходи на канал и получай всё самое важное для сдачи экзамена по литературе!\n "+link, "", 0)
 			if !sended {
 				log.Log(logrus.ErrorLevel, path+": Can't send message to client. Payment: "+extID)
 				return

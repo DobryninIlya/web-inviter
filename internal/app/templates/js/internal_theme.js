@@ -1,4 +1,5 @@
 let tg = window.Telegram.WebApp;
+tg.expand()
 const root = document.documentElement;
 const colorScheme = getComputedStyle(root).getPropertyValue('--tg-color-scheme');
 if (colorScheme != 'light' && colorScheme != '') {
@@ -16,5 +17,5 @@ if (colorScheme != 'light' && colorScheme != '') {
     arrowElements.forEach((arrow) => {
         arrow.setAttribute('fill', tg.themeParams.text_color);
     });
-    tg.expand()
+
 }

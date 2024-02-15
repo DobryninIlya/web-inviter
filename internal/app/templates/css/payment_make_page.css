@@ -137,4 +137,14 @@ img {
         color: var(--tg-theme-text-color);
         padding: 30px;
     }
-}}
+}
+
+.opisanie_checkbox {
+    margin-left: 30px;
+    font-size: 14px;
+    color: var(--tg-theme-hint-color);
+}
+
+.price_checkbox {
+    font-size: 20px;
+}

@@ -25,11 +25,11 @@ func NewPaymentRequestHandler(log *logrus.Logger, store sqlstore.StoreInterface,
 		subscribeLevel := url.Get("channel") // month, half-year, year
 		var amount string
 		switch subscribeLevel {
-		case "case1":
-			amount = "150"
-		case "case2":
+		case "literature_for_heart":
+			amount = "499"
+		case "case2": // второй канал
 			amount = "700"
-		case "poop_zemli":
+		case "poop_zemli": // третий канал
 			amount = "1100"
 		default:
 			log.Log(logrus.ErrorLevel, path+": wrong subscribe channel, aborted")
@@ -56,7 +56,7 @@ func NewPaymentRequestHandler(log *logrus.Logger, store sqlstore.StoreInterface,
 				Type:      "redirect",
 				ReturnUrl: "https://literaturaforheart.ru/payments/done/" + uid, //TODO поменять return_URL
 			},
-			Description: "Подписка в закрытый канал",
+			Description: "Покупка доступа к закрытому каналу \"Лит-ра для сердца и разума|XVIII-первая половина  XIX",
 		}, idempotenceKey)
 		if err != nil {
 			log.Log(logrus.ErrorLevel, path+": "+err.Error())
