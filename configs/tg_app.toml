@@ -1,4 +1,5 @@
 bind_addr = ":https"
+#bind_addr = ":8282"
 bot_token="6425458319:AAHPfDU46v3YQgbr2XnVkAmHHIXXuvWWHzM"
-yookassa_shop_id = 286757
-yookassa_api_key = "test_TMECD_ZTOWuZASLPleQAfcjQS0YDC9cLBkZ9nt2-GZs"
+yookassa_shop_id = 303470
+yookassa_api_key = "live_kCiNOrP5cyV3uTVA-Kk2u6xhXy0ln1-Rzqf4bCiPFiQ"

@@ -6,6 +6,7 @@ type Config struct {
 	ShopID      int    `toml:"yookassa_shop_id"`
 	APIKey      string `toml:"yookassa_api_key"`
 	BotToken    string `toml:"bot_token"`
+	Debug       bool   `toml:"debug"`
 }
 
 // NewConfig ...

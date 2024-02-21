@@ -14,137 +14,117 @@
 /*}*/
 
 @font-face {
-    font-family: "Montserrat-Medium";
-    src: url(fonts/Montserrat-Medium.ttf);
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Montserrat-Medium";
+  src: url(fonts/Montserrat-Medium.ttf);
+  font-weight: normal;
+  font-style: normal;
 }
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 body {
-    font-family: "Montserrat-Medium";
-    color: var(--tg-theme-text-color);
-    background: var(--tg-theme-bg-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 16px;
+  font-family: "Montserrat-Medium";
+  color: var(--tg-theme-text-color);
+  background: var(--tg-theme-bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
 }
 .bold {
-    font-size: 20px;
+  font-size: 20px;
 }
 p {
-    text-align: center;
+  text-align: center;
 }
 li {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 li:not(:last-child) {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
-.explanation-text {
-    color: var(--tg-theme-hint-color);
-}
 .advantages {
-    text-align: left;
-    color: var(--tg-theme-hint-color);
+  text-align: left;
+  color: var(--tg-theme-hint-color);
 }
 
 .bttn {
-    background: var(--tg-theme-button-color);
-    color: var(--tg-theme-button-text-color);
-    width: 95%;
-    font-size: 20px;
-    border-radius: 10px;
-    color: var(--tg-theme-text-color);
-    border: none;
-    padding: 15px;
-    margin-top: 10px;
+  background: var(--tg-theme-button-color);
+  color: var(--tg-theme-button-text-color);
+  width: 95%;
+  font-size: 20px;
+  border-radius: 10px;
+  color: var(--tg-theme-text-color);
+  border: none;
+  padding: 15px;
+  margin-top: 10px;
 }
 img {
-    border-radius: 40px;
-    width: 80px;
-    height: 80px;
+  border-radius: 40px;
+  width: 80px;
+  height: 80px;
 }
 .deleted {
-    display: none;
+  display: none;
 }
 .item {
-    margin-bottom: 2em;
+  margin-bottom: 2em;
 }
 
 /* checkbox-rect */
 .checkbox-rect input[type="checkbox"] {
-    display: none;
+  display: none;
 }
 .checkbox-rect input[type="checkbox"] + label {
-    display: block;
-    position: relative;
-    padding-left: 35px;
+  display: block;
+  position: relative;
+  padding-left: 35px;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 .checkbox-rect input[type="checkbox"] + label:last-child {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .checkbox-rect input[type="checkbox"] + label:before {
-    content: "";
-    display: block;
-    width: 0.9em;
-    height: 0.9em;
-    border: 1px solid #343a3f;
-    border-radius: 0.2em;
-    position: absolute;
-    left: 0;
-    top: 0;
-    -webkit-transition: all 0.2s, background 0.2s ease-in-out;
-    transition: all 0.2s, background 0.2s ease-in-out;
-    background: #f3f3f3;
+  content: "";
+  display: block;
+  width: 0.9em;
+  height: 0.9em;
+  border: 1px solid #343a3f;
+  border-radius: 0.2em;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transition: all 0.2s, background 0.2s ease-in-out;
+  transition: all 0.2s, background 0.2s ease-in-out;
+  background: #f3f3f3;
 }
 .checkbox-rect input[type="checkbox"]:checked + label:before {
-    width: 0.9em;
-    height: 0.9em;
-    border-radius: 0.2em;
-    border: 2px solid #fff;
-    background: #50565a;
-    box-shadow: 0 0 0 1px #000;
+  width: 0.9em;
+  height: 0.9em;
+  border-radius: 0.2em;
+  border: 2px solid #fff;
+  background: #50565a;
+  box-shadow: 0 0 0 1px #000;
 }
 .checkbox-rect {
-    margin-bottom: 30px;
-}
-
-@media screen and (min-width: 400px) {
-    li {
-        margin-right: 0px;
-    }
-    body {
-        font-size: 30px;
-    }
-    img {
-        border-radius: 100px;
-        width: 200px;
-        height: 200px;
-    }
-    .bold {
-        font-size: 50px;
-    }
-    .bttn {
-        margin-top: 30px;
-        font-size: 50px;
-        border-radius: 20px;
-        color: var(--tg-theme-text-color);
-        padding: 30px;
-    }
+  margin-bottom: 30px;
 }
 
 .opisanie_checkbox {
-    margin-left: 30px;
-    font-size: 14px;
-    color: var(--tg-theme-hint-color);
+  margin-left: 30px;
+  font-size: 14px;
+  color: var(--tg-theme-hint-color);
 }
 
 .price_checkbox {
-    font-size: 20px;
+  font-size: 20px;
+}
+@media screen and (max-width: 130px) {
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+  }
 }
