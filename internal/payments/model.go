@@ -11,12 +11,19 @@ type YokassaPayment struct {
 }
 
 type Receipt struct {
-	Items Items `json:"items"`
+	Items    []Items  `json:"items"`
+	Customer Customer `json:"customer"`
 }
 
 type Items struct {
-	Description string `json:"description,omitempty"`
+	Description string `json:"description"`
 	Amount      Amount `json:"amount"`
+	VatCode     int    `json:"vat_code"`
+	Quantity    string `json:"quantity"`
+}
+
+type Customer struct {
+	Email string `json:"email"`
 }
 
 type Confirmation struct {

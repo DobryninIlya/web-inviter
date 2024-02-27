@@ -46,6 +46,16 @@ func NewPaymentRequestHandler(log *logrus.Logger, store sqlstore.StoreInterface,
 		}
 		idempotenceKey := fmt.Sprintf("%v:%v", time.Now().Unix(), clientID)
 		uid := tools.RandStringBytes(32)
+		items := make([]payments.Items, 1)
+		items[0] = payments.Items{
+			Description: "Покупка доступа к закрытому каналу",
+			Amount: payments.Amount{
+				Value:    "10",
+				Currency: "RUB",
+			},
+			VatCode:  1,
+			Quantity: "1",
+		}
 		payment, err := pay.PaymentRequest(payments.YokassaPayment{
 			Amount: payments.Amount{
 				Value:    amount,
@@ -57,17 +67,15 @@ func NewPaymentRequestHandler(log *logrus.Logger, store sqlstore.StoreInterface,
 				ReturnUrl: "https://literaturaforheart.ru/payments/done/" + uid, //TODO поменять return_URL
 			},
 			Description: "Покупка доступа к закрытому каналу \"Лит-ра для сердца и разума|XVIII-первая половина  XIX",
-			Receipt: payments.Receipt{Items: payments.Items{
-				Description: "Покупка доступа к закрытому каналу",
-				Amount: payments.Amount{
-					Value:    amount,
-					Currency: "RUB",
-				},
-			}},
+			Receipt:     payments.Receipt{Items: items, Customer: payments.Customer{Email: "example@mail.ru"}},
 		}, idempotenceKey)
 		if err != nil {
 			log.Log(logrus.ErrorLevel, path+": "+err.Error())
 			h.ErrorHandlerAPI(w, r, http.StatusInternalServerError, err)
+			return
+		}
+		if payment.Status == "" {
+			log.Log(logrus.ErrorLevel, path+": некорректный запрос")
 			return
 		}
 		err = store.API().SaveTransaction(model.Transaction{
