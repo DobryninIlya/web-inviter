@@ -7,6 +7,16 @@ type YokassaPayment struct {
 	Capture      bool         `json:"capture"`
 	Confirmation Confirmation `json:"confirmation"`
 	Description  string       `json:"description"`
+	Receipt      Receipt      `json:"receipt"`
+}
+
+type Receipt struct {
+	Items Items `json:"items"`
+}
+
+type Items struct {
+	Description string `json:"description,omitempty"`
+	Amount      Amount `json:"amount"`
 }
 
 type Confirmation struct {

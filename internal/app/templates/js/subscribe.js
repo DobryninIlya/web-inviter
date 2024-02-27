@@ -37,9 +37,18 @@ document.getElementById("make_payment").addEventListener("click", function() {
         .then(function(data) {
             // Обрабатываем результат
             var resultUrl = data.result;
+
+            // Проверяем, открыт ли сайт на мобильном устройстве
+            var isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
             // Перенаправляем пользователя по ссылке из result
-            // window.location.href = resultUrl;
-            window.open(resultUrl, '_blank');
+            if (isMobile) {
+                // Для мобильных устройств используем window.location.href
+                window.location.href = resultUrl;
+            } else {
+                // Для десктопных браузеров используем window.open
+                window.open(resultUrl, '_blank');
+            }
         })
         .catch(function(error) {
             console.log('Ошибка:', error);

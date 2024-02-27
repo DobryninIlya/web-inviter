@@ -57,6 +57,13 @@ func NewPaymentRequestHandler(log *logrus.Logger, store sqlstore.StoreInterface,
 				ReturnUrl: "https://literaturaforheart.ru/payments/done/" + uid, //TODO поменять return_URL
 			},
 			Description: "Покупка доступа к закрытому каналу \"Лит-ра для сердца и разума|XVIII-первая половина  XIX",
+			Receipt: payments.Receipt{Items: payments.Items{
+				Description: "Покупка доступа к закрытому каналу",
+				Amount: payments.Amount{
+					Value:    amount,
+					Currency: "RUB",
+				},
+			}},
 		}, idempotenceKey)
 		if err != nil {
 			log.Log(logrus.ErrorLevel, path+": "+err.Error())
