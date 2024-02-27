@@ -26,7 +26,7 @@ func NewPaymentRequestHandler(log *logrus.Logger, store sqlstore.StoreInterface,
 		var amount string
 		switch subscribeLevel {
 		case "literature_for_heart":
-			amount = "10"
+			amount = "499"
 		case "case2": // второй канал
 			amount = "700"
 		case "poop_zemli": // третий канал
@@ -50,7 +50,7 @@ func NewPaymentRequestHandler(log *logrus.Logger, store sqlstore.StoreInterface,
 		items[0] = payments.Items{
 			Description: "Покупка доступа к закрытому каналу",
 			Amount: payments.Amount{
-				Value:    "10",
+				Value:    amount,
 				Currency: "RUB",
 			},
 			VatCode:  1,
