@@ -23,14 +23,19 @@ func NewPaymentRequestHandler(log *logrus.Logger, store sqlstore.StoreInterface,
 		//subscribeLevel := chi.URLParam(r, "level") // month, half-year, year
 		url := r.URL.Query()
 		subscribeLevel := url.Get("channel") // month, half-year, year
-		var amount string
+		var amount, description string
 		switch subscribeLevel {
 		case "literature_for_heart":
 			amount = "499"
+			description = "Покупка доступа к закрытому каналу \"Лит-ра для сердца и разума|XVIII-первая половина  XIX"
 		case "case2": // второй канал
 			amount = "700"
+			description = "Покупка доступа к закрытому каналу \"Лит-ра для сердца и разума|XVIII-первая половина  XIX"
+
 		case "poop_zemli": // третий канал
-			amount = "1100"
+			amount = "499"
+			description = "Покупка доступа к закрытому каналу \"Лит-ра для сердца и разума | Вторая половина  XIX"
+
 		default:
 			log.Log(logrus.ErrorLevel, path+": wrong subscribe channel, aborted")
 			h.ErrorHandlerAPI(w, r, http.StatusBadRequest, errors.New("wrong subscribe level"))
@@ -66,7 +71,7 @@ func NewPaymentRequestHandler(log *logrus.Logger, store sqlstore.StoreInterface,
 				Type:      "redirect",
 				ReturnUrl: "https://literaturaforheart.ru/payments/done/" + uid, //TODO поменять return_URL
 			},
-			Description: "Покупка доступа к закрытому каналу \"Лит-ра для сердца и разума|XVIII-первая половина  XIX",
+			Description: description,
 			Receipt:     payments.Receipt{Items: items, Customer: payments.Customer{Email: "example@mail.ru"}},
 		}, idempotenceKey)
 		if err != nil {
