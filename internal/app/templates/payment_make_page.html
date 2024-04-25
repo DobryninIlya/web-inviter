@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Платеж проведен</title>
+    <link rel="stylesheet" href="/static/css/payment_make_page.css">
+    <script src="https://telegram.org/js/telegram-web-app.js">
+        let tg = window.Telegram.WebApp;
+        tg.ready()
+        tg.expand()
+    </script>
+    <script src="/static/js/internal_theme.js" defer></script>
+    <script src="/static/js/subscribe.js" defer></script>
 </head>
 <body>
-<img src="logo.png" />
-<p class="list-header-text bold show deleted">
+<img src="/static/img/logo.png" />
+<div class="subscribe_pay" style="display:none;">
+<p class="list-header-text bold show ">
     Выберите канал, подписку на который хотите купить:
 </p>
-<div class="item show deleted">
-    <div class="checkbox-rect show deleted">
-        <div class="first_block">
-            <input
-                    type="radio"
-                    id="checkbox-rect1"
-                    name="check1"
-                    class="show deleted"
-            />
-            <label for="checkbox-rect1 margin30" class="show deleted">
-                <p class="checkbox_header_text margin30">
-                    «Лит-ра для сердца и разума|XVIII-первая половина XIX»
-                </p>
-            </label>
-        </div>
+<div class="item show ">
+    <div class="checkbox-rect show ">
+        <input
+                type="radio"
+                id="checkbox-rect1"
+                name="channel"
+                class="show "
+                checked="checked"
+                value="literature_for_heart"
+        />
+        <label for="checkbox-rect1" class="show">«Лит-ра для сердца и разума|XVIII-первая половина XIX»</label>
         <div class="opisanie_checkbox">
             На канале вы найдете: <br />
             — Подкасты по произведениям от «Слова о полку Игореве» до «Шинели»
@@ -32,204 +37,58 @@
             материал в виде ссылок на лекции, видео <br />— Учебники, сборники в
             PDF <br />— Авторские материалы
         </div>
-        <div class="price_checkbox margin30">Стоимость : 499 рублей</div>
+        <div class="price_checkbox">Стоимость : 499 рублей</div>
     </div>
-    <div class="checkbox-rect show deleted">
-        <div class="first_block">
-            <input
-                    type="radio"
-                    id="checkbox-rect1"
-                    name="check1"
-                    class="show deleted"
-            />
-            <label for="checkbox-rect1 margin30" class="show deleted">
-                <p class="checkbox_header_text margin30">
-                    «Литература для сердца и разума | Вторая половина XIX века»
-                </p>
-            </label>
-        </div>
-        <div class="opisanie_checkbox">
-            На канале вы найдете: <br />
-            — Подкасты по произведениям от «Слова о полку Игореве» до «Шинели»
-            Гоголя <br />— Конспекты к каждому подкасту <br />— Дополнительный
-            материал в виде ссылок на лекции, видео <br />— Учебники, сборники в
-            PDF <br />— Авторские материалы
-        </div>
-        <div class="price_checkbox margin30">Стоимость : 499 рублей</div>
-    </div>
+    <button type="button" class="pay_bttn bttn" id="make_payment">
+
+        Оплатить
+    </button>
 </div>
-<p class="list-header-text bold remove">Возможности после покупки:</p>
-<ul class="advantages-list remove">
-    <li class="advantages remove">
+</div>
+<div class="advantages_text">
+<p class="list-header-text bold">Возможности после покупки:</p>
+<ul class="advantages-list">
+    <li class="advantages">
         ⭐️ бессрочный доступ к материалам канала
     </li>
-    <li class="advantages remove">
+    <li class="advantages ">
         ⭐️ литературные подкасты по произведениям XVIII — первой половины XIX
         в. из кодификатора ОГЭ, ЕГЭ
     </li>
-    <li class="advantages remove">⭐️ конспекты к каждому подкасту</li>
-    <li class="advantages remove">
+    <li class="advantages ">⭐️ конспекты к каждому подкасту</li>
+    <li class="advantages ">
         ⭐️ ссылки на дополнительные видео-лекции, статьи, учебники и материалы
         по теме
     </li>
-    <li class="advantages remove">
+    <li class="advantages ">
         ⭐️ теоретическая помощь модератора в чате канала
     </li>
-    <li class="advantages remove">⭐️ авторские материалы</li>
+    <li class="advantages ">⭐️ авторские материалы</li>
 </ul>
-<p class="list-header-text bold remove">
+<p class="list-header-text bold ">
     Кому будут полезны наши подкасты?
 </p>
 <ul>
-    <li class="advantages remove">
+    <li class="advantages ">
         ✏️ Учащимся 9,10,11 классов, сдающим экзамены (ОГЭ, ЕГЭ) по литературе
     </li>
-    <li class="advantages remove">
+    <li class="advantages ">
         ✏️ Учащимся старшей школы, чтобы подтянуть свои знания по дисциплине
     </li>
-    <li class="advantages remove">
+    <li class="advantages ">
         ✏️ Учителям литературы, которые хотят освежить быстро свои знания перед
         уроком по тому или иному произведению
     </li>
-    <li class="advantages remove">
+    <li class="advantages ">
         ✏️ Любителям литературы, желающим расширить свой кругозор
     </li>
 </ul>
-<button type="button" class="pay_bttn bttn" onclick="deleteElem()">
+<button type="button" class="pay_bttn bttn" id="next_payment">
     Оплатить
 </button>
+</div>
 </body>
 <script>
-    let tg = window.Telegram.WebApp;
 
-    let button_method = 0;
-    console.log(button_method);
-
-    function deleteElem() {
-        if (button_method == 0) {
-            var delete_array = document.getElementsByClassName("remove");
-            var show_array = document.getElementsByClassName("show");
-
-            Array.prototype.forEach.call(delete_array, function (el) {
-                el.classList.add("deleted");
-            });
-            Array.prototype.forEach.call(show_array, function (el) {
-                el.classList.remove("deleted");
-            });
-            button_method = 1;
-        } else {
-            ///засунуть сюда запрос
-        }
-    }
 </script>
-<style>
-    @font-face {
-        font-family: "Montserrat-Medium";
-        src: url(fonts/Montserrat-Medium.ttf);
-        font-weight: normal;
-        font-style: normal;
-    }
-    .margin30 {
-        margin-left: 15px;
-    }
-    .first_block {
-        display: flex;
-    }
-    .checkbox-rect {
-        display: flex;
-        flex-direction: column;
-    }
-    .checkbox-rect1 {
-        margin-bottom: 10px;
-    }
-    .opisanie_checkbox {
-        margin-left: 30px;
-        font-size: 14px;
-        color: var(--tg-theme-hint-color);
-    }
-    .price_checkbox {
-        font-size: 20px;
-    }
-    .checbox ul {
-        list-style-type: none;
-    }
-    body {
-        font-family: "Montserrat-Medium";
-        color: var(--tg-theme-text-color);
-        background: var(--tg-theme-bg-color);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 16px;
-    }
-    .bold {
-        font-size: 20px;
-    }
-    p {
-        text-align: center;
-    }
-    li {
-        margin-right: 10px;
-    }
-    li:not(:last-child) {
-        margin-bottom: 10px;
-    }
-
-    .explanation-text {
-        color: var(--tg-theme-hint-color);
-    }
-    .advantages {
-        text-align: left;
-        color: var(--tg-theme-hint-color);
-    }
-
-    .bttn {
-        background: var(--tg-theme-button-color);
-        color: var(--tg-theme-button-text-color);
-        width: 95%;
-        font-size: 20px;
-        border-radius: 10px;
-        color: var(--tg-theme-text-color);
-        border: none;
-        padding: 15px;
-        margin-top: 10px;
-    }
-    img {
-        border-radius: 40px;
-        width: 80px;
-        height: 80px;
-    }
-    .deleted {
-        display: none;
-    }
-    .item {
-        margin-bottom: 2em;
-    }
-
-    /* checkbox-rect */
-
-    @media screen and (min-width: 400px) {
-        li {
-            margin-right: 0px;
-        }
-        body {
-            font-size: 30px;
-        }
-        img {
-            border-radius: 100px;
-            width: 200px;
-            height: 200px;
-        }
-        .bold {
-            font-size: 50px;
-        }
-        .bttn {
-            margin-top: 30px;
-            font-size: 50px;
-            border-radius: 20px;
-            color: var(--tg-theme-text-color);
-            padding: 30px;
-        }
-    }
-</style>
 </html>
